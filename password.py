@@ -3,21 +3,30 @@ import random
 
 print("=== Password Generator ===")
 
-pass_length = int(input("Enter password length: "))
+try:
+    pass_length = int(input("Enter password length: "))
 
-characters = (
-    string.ascii_letters
-    + string.digits
-    + "!@#$%^&*"
-)
+except ValueError:
+    print("Invalid Input")
 
-list1 = []
 
-while len(list1) < pass_length:
-    random_gen = random.choice(characters)
-    list1.append(random_gen)
-    # list1+=(random_gen)
+else:
+    if pass_length <= 0:
+        print("Invalid length")
 
-    joined = ''.join(list1)
+    else:
+        characters = (
+            string.ascii_letters
+            + string.digits
+            + "!@#$%^&*"
+        )
 
-print(joined)
+        list1 = []
+
+        while len(list1) < pass_length:
+            random_gen = random.choice(characters)
+            list1.append(random_gen)
+
+        joined = ''.join(list1)
+
+        print("Generated password:", joined)
